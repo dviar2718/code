@@ -1,0 +1,9 @@
+{
+    "path" : "~/code/R/Abalone",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

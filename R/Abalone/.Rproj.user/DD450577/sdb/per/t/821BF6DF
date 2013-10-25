@@ -1,0 +1,15 @@
+{
+    "contents" : "getwd()\n# [1] \"/Users/dlviar\"\nsetwd('/Users/dlviar/coursera/Computing for Data Analysis - R Course John Hop/hw 1/')\n# shell('pwd')  #### Only on Windows\n# Error: could not find function \"shell\"\nsystem('pwd')\n# /Users/dlviar/coursera/Computing for Data Analysis - R Course John Hop/hw 1\ndir()\n#[1] \"hw1_data.csv\" \"hw1_data.zip\" \"hw1.R\" \n\ndata <- read.csv('/Users/dlviar/coursera/Computing for Data Analysis - R Course John Hop/hw 1/hw1_data.csv')\n\n# first two rows\ndata[1:2,]\n\n# number of rows and columns\ndim(data)\n\n# last two rows\ndata[152:153,]\ntail(data, 2)\n\n# value of Ozone on 47th row\ndata[47,]\ndata[47,1]\n\n# How many missing values are in the Ozone column of this data frame?\nlength(which(is.na(ozone)))\n# [1] 37\nlength(which(is.na(data$Ozone)))\n# [1] 37\nlength(which(is.na(data)))\n# [1] 44\n# Now get it for each column\nlapply(data,function(x) {sum(is.na(x))})\n\n# What is the mean of the Ozone column in this dataset? Exclude missing values (coded as NA) \n# from this calculation.\nmean(na.omit(ozone))\n# 42.12931\nmean(ozone[!is.na(ozone)])\n# 42.12931\nmean(ozone, na.rm=T)\n# 42.12931\nmean(ozone)\n# NA\n\n# Extract the subset of rows of the data frame where Ozone values are above 31 \n# and Temp values are above 90. What is the mean of Solar.R in this subset?\nsubset_frame <- data[data$Ozone > 31 & data$Temp > 90,]\nmean(subset_frame$Solar.R, na.rm=T)\n# [1] 212.8\n\n# What is the mean of \"Temp\" when \"Month\" is equal to 6?\nmonth_frame = data[data$Month == 6,]\nmean(month_frame$Temp, na.rm=T)\n# [1] 79.1\n\n# What was the maximum ozone value in the month of May (i.e. Month = 5)?\nmonth_frame2 = data[data$Month == 5,]\nmax(month_frame2$Ozone, na.rm=T)\n# [1] 115\nmax(data[data$Month == 5,]$Ozone,na.rm=T)\ntapply(data$Ozone, data$Month, max, na.rm=T)\n5   6   7   8   9 \n115  71 135 168  96 \n",
+    "created" : 1380924263024.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2197744557",
+    "id" : "821BF6DF",
+    "lastKnownWriteTime" : 1380632183,
+    "path" : "~/coursera/Computing for Data Analysis - R Course John Hop/hw 1/hw1.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
