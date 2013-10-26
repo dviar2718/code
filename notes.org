@@ -1,0 +1,62 @@
+#+STARTUP: overview
+
+* GIT
+** Setup Commands
+git config --global user.name "dviar2718"
+git config --global user.email dan.viar@gmail.com
+git config --global core.editor emacs
+git config --list
+Note that you can check a key with
+git config key
+git config user.name
+** Getting Help
+git help config
+git config --help
+man git-config
+** Create a repo from a folder on disk
+First navigate to the folder then initialize a new repo
+git init
+Then add all the contents to the repo
+git add *.*
+git commit -m 'initial version'
+git status
+git add vim_notes.txt
+git commit
+** Push a repo to a remote location
+First go to GitHub and create a new (empty) repo
+Next create a link (in this case called "code") to the remote location
+git remote add code git://github.com/dviar2718/code.git
+You can remove it if you make a mistake with:
+git remote remove code
+List all remotes
+git remote -v
+git push -u code master
+** Clone a Repo
+First navigate to the directory where you want the repo to be located
+git clone git://github.com/dviar2718/pzelle2.git
+If you want to specify a different target directory
+git clone git://github.com/dviar2718/pzelle2.git my_pzelle2
+
+
+
+
+
+
+
+* Top level headline
+** Second level
+*** 3rd level
+some text
+*** 3rd level
+more text
+
+* Another Top level he
+Some more text
+
+* Use Alt-Enter to create a new heading
+* Use C-Enter to insert a new heading at the end of the current branch
+** what?
+*** Seco1nd level 2 						       :home:
+**** 3rd level 
+**** Inserted 3rd level
+**** Another 3rd level
