@@ -34,13 +34,45 @@ git push -u code master
 ** Clone a Repo
 First navigate to the directory where you want the repo to be located
 git clone git://github.com/dviar2718/pzelle2.git
-If you want to specify a different target directory
+If you want to specify a different target directory (e.g. my_pzelle2)
 git clone git://github.com/dviar2718/pzelle2.git my_pzelle2
 
+** File Status Life Cycle
+Each file in your working directory can be in one of two states: 
+1. tracked
+2. untracked
+
+Tracked files can be 
+- unmodified
+- modified
+- staged
+
+The normal life cycle:
+1. Clone a repo or start a new one
+2. Add all untracked files you want to be part of the repo
+3. They become unmodified.
+4. Edit a file.  It becomes "modified".
+5. Stage the file.  It becomes "staged".
+6. Commit.  The file is now "unmodified". 
+   
+use git add to stage a modified file.
+
+** Ignoring Files
+cat .gitignore
+*.[oa]
+*.~
+
+The first line above tells git to ignore files that end with .o or .a
+The second line tells git to ignore files that end with *.~
 
 
-
-
+** What has changed inside your files?
+To see what you've changed but not yet staged:
+git diff
+To see what you've staged that will go into your next commit:
+git diff --cached
+git diff --staged
+What have you changed but not yet staged?
 
 
 * Top level headline
