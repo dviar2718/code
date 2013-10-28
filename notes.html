@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>notes</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="notes"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-10-28T07:22-0400"/>
+<meta name="author" content="Daniel Viar"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">notes</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 GIT</a>
+<ul>
+<li><a href="#sec-1-1">1.1 Setup Commands</a></li>
+<li><a href="#sec-1-2">1.2 Getting Help</a></li>
+<li><a href="#sec-1-3">1.3 Create a repo from a folder on disk</a></li>
+<li><a href="#sec-1-4">1.4 Push a repo to a remote location</a></li>
+<li><a href="#sec-1-5">1.5 Clone a Repo</a></li>
+<li><a href="#sec-1-6">1.6 File Status Life Cycle</a></li>
+<li><a href="#sec-1-7">1.7 Ignoring Files</a></li>
+<li><a href="#sec-1-8">1.8 What has changed inside your files?</a>
+<ul>
+<li><a href="#sec-1-8-1">1.8.1 To see what you've changed but not yet staged:</a></li>
+<li><a href="#sec-1-8-2">1.8.2 To see what you've staged that will go into your next commit:</a></li>
+<li><a href="#sec-1-8-3">1.8.3 What have you changed but not yet staged?</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-9">1.9 Different ways to commit</a>
+<ul>
+<li><a href="#sec-1-9-1">1.9.1 The normal way:</a></li>
+<li><a href="#sec-1-9-2">1.9.2 For more detail (run diff in editor)</a></li>
+<li><a href="#sec-1-9-3">1.9.3 Specify your commit message as you commit</a></li>
+<li><a href="#sec-1-9-4">1.9.4 Skipping the Staging Area</a></li>
+<li><a href="#sec-1-9-5">1.9.5 Remove Files from Git</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-10">1.10 Viewing the Commit History</a>
+<ul>
+<li><a href="#sec-1-10-1">1.10.1 Limiting Log Output</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-11">1.11 Author vs. Committer</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2 Top level headline</a>
+<ul>
+<li><a href="#sec-2-1">2.1 Second level</a>
+<ul>
+<li><a href="#sec-2-1-1">2.1.1 3rd level</a></li>
+<li><a href="#sec-2-1-2">2.1.2 3rd level</a></li>
+</ul></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 Another Top level he</a></li>
+<li><a href="#sec-4">4 Use Alt-Enter to create a new heading</a></li>
+<li><a href="#sec-5">5 Use C-Enter to insert a new heading at the end of the current branch</a>
+<ul>
+<li><a href="#sec-5-1">5.1 what?</a>
+<ul>
+<li><a href="#sec-5-1-1">5.1.1 Seco1nd level 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> GIT</h2>
+<div class="outline-text-2" id="text-1">
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Setup Commands</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+
+
+<pre class="example">git config --global user.name "dviar2718"
+git config --global user.email dan.viar@gmail.com
+git config --global core.editor emacs
+git config --list
+Note that you can check a key with
+git config key
+git config user.name
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Getting Help</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+
+
+<pre class="example">git help config
+git config --help
+man git-config
+
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Create a repo from a folder on disk</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<p>First navigate to the folder then initialize a new repo
+</p>
+
+
+<pre class="example">git init
+
+</pre>
+
+<p>
+Then add all the contents to the repo
+</p>
+
+
+<pre class="example">git add *.*
+git commit -m 'initial version'
+git status
+git add vim_notes.txt
+git commit
+
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Push a repo to a remote location</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<p>First go to GitHub and create a new (empty) repo
+</p>
+<p>
+Next create a link (in this case called "code") to the remote location
+</p>
+
+
+<pre class="example">git remote add code git://github.com/dviar2718/code.git
+</pre>
+
+<p>
+You can remove it if you make a mistake with:
+</p>
+
+
+<pre class="example">git remote remove code
+
+</pre>
+
+<p>
+List all remotes
+</p>
+
+
+<pre class="example">git remote -v
+git push -u code master
+
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Clone a Repo</h3>
+<div class="outline-text-3" id="text-1-5">
+
+<p>First navigate to the directory where you want the repo to be located
+</p>
+
+
+<pre class="example">git clone git://github.com/dviar2718/pzelle2.git
+
+</pre>
+
+<p>
+If you want to specify a different target directory (e.g. my<sub>pzelle2</sub>)
+</p>
+
+
+
+<pre class="example">git clone git://github.com/dviar2718/pzelle2.git my_pzelle2
+
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> File Status Life Cycle</h3>
+<div class="outline-text-3" id="text-1-6">
+
+<p>Each file in your working directory can be in one of two states: 
+</p>
+<ol>
+<li>tracked
+</li>
+<li>untracked
+</li>
+</ol>
+
+
+<p>
+Tracked files can be 
+</p>
+<ul>
+<li>unmodified
+</li>
+<li>modified
+</li>
+<li>staged
+</li>
+</ul>
+
+
+<p>
+The normal life cycle:
+</p><ol>
+<li>Clone a repo or start a new one
+</li>
+<li>Add all untracked files you want to be part of the repo
+</li>
+<li>They become unmodified.
+</li>
+<li>Edit a file.  It becomes "modified".
+</li>
+<li>Stage the file.  It becomes "staged".
+</li>
+<li>Commit.  The file is now "unmodified". 
+</li>
+</ol>
+
+
+<p>   
+use git add to stage a modified file.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Ignoring Files</h3>
+<div class="outline-text-3" id="text-1-7">
+
+<p>cat .gitignore
+*.[oa]
+*.~
+</p>
+<p>
+The first line above tells git to ignore files that end with .o or .a
+The second line tells git to ignore files that end with *.~
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> What has changed inside your files?</h3>
+<div class="outline-text-3" id="text-1-8">
+
+
+</div>
+
+<div id="outline-container-1-8-1" class="outline-4">
+<h4 id="sec-1-8-1"><span class="section-number-4">1.8.1</span> To see what you've changed but not yet staged:</h4>
+<div class="outline-text-4" id="text-1-8-1">
+
+<p>git diff
+</p></div>
+
+</div>
+
+<div id="outline-container-1-8-2" class="outline-4">
+<h4 id="sec-1-8-2"><span class="section-number-4">1.8.2</span> To see what you've staged that will go into your next commit:</h4>
+<div class="outline-text-4" id="text-1-8-2">
+
+<p>git diff &ndash;cached
+git diff &ndash;staged
+</p></div>
+
+</div>
+
+<div id="outline-container-1-8-3" class="outline-4">
+<h4 id="sec-1-8-3"><span class="section-number-4">1.8.3</span> What have you changed but not yet staged?</h4>
+<div class="outline-text-4" id="text-1-8-3">
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Different ways to commit</h3>
+<div class="outline-text-3" id="text-1-9">
+
+
+</div>
+
+<div id="outline-container-1-9-1" class="outline-4">
+<h4 id="sec-1-9-1"><span class="section-number-4">1.9.1</span> The normal way:</h4>
+<div class="outline-text-4" id="text-1-9-1">
+
+<p>git commit
+</p></div>
+
+</div>
+
+<div id="outline-container-1-9-2" class="outline-4">
+<h4 id="sec-1-9-2"><span class="section-number-4">1.9.2</span> For more detail (run diff in editor)</h4>
+<div class="outline-text-4" id="text-1-9-2">
+
+<p>git commit -v
+</p></div>
+
+</div>
+
+<div id="outline-container-1-9-3" class="outline-4">
+<h4 id="sec-1-9-3"><span class="section-number-4">1.9.3</span> Specify your commit message as you commit</h4>
+<div class="outline-text-4" id="text-1-9-3">
+
+<p>git commit -m "Changed code to speed up hitory proc"
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-9-4" class="outline-4">
+<h4 id="sec-1-9-4"><span class="section-number-4">1.9.4</span> Skipping the Staging Area</h4>
+<div class="outline-text-4" id="text-1-9-4">
+
+<p>If you want to automatically commit everything that has changed
+In other words, it will stage everything first.
+git commit -a    
+</p></div>
+
+</div>
+
+<div id="outline-container-1-9-5" class="outline-4">
+<h4 id="sec-1-9-5"><span class="section-number-4">1.9.5</span> Remove Files from Git</h4>
+<div class="outline-text-4" id="text-1-9-5">
+
+<p>First remove the file from the Working directory
+rm filename
+Next, stage the files removal
+git rm filename
+If the file was modified and staged already you can force the removal
+git rm -f filename
+To keep the file on your hard drive but not have Git track it
+git rm &ndash;cached filename
+You can also use file-glob patterns.  For example
+git rm log/\*.log
+removes all .log files in the log directory.
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-1-10" class="outline-3">
+<h3 id="sec-1-10"><span class="section-number-3">1.10</span> Viewing the Commit History</h3>
+<div class="outline-text-3" id="text-1-10">
+
+<p>To list the commits made in reverse chronological order
+git log
+To show the diff introduced in each commit
+git log p
+git log -p -2  ## limit output to only last two entries
+To see abbreviated stats for each commit
+git log &ndash;stat
+Use &ndash;pretty to change the log output formats to something other than default
+git log &ndash;pretty=oneline  #can also use short, full, and fuller
+You can also specify your own output format
+git log &ndash;pretty=format:"%h - %an, %ar : %s"
+You can add an "ASCII" graph showing the merge history
+git log &ndash;pretty=format:"%h %s" &ndash;graph
+</p>
+<p>
+Option  Description of Output
+%H      Commit hash
+%h      Abbreviated commit hash 
+%T      Tree hash 
+%t      Abbreviated tree hash 
+%P      Parent hashes 
+%p      Abbreviated parent hashes 
+%an     Author name 
+%ae     Author e-mail 
+%ad     Author date (format respects the date= option) 
+%ar     Author date, relative 
+%cn     Committer name 
+%ce     Committer email 
+%cd     Committer date 
+%cr     Committer date, relative 
+%s      Subject
+</p>
+</div>
+
+<div id="outline-container-1-10-1" class="outline-4">
+<h4 id="sec-1-10-1"><span class="section-number-4">1.10.1</span> Limiting Log Output</h4>
+<div class="outline-text-4" id="text-1-10-1">
+
+<p>-n shows the last n commits.  Example:
+git log -p -2  ## limit output to only last two entries
+Get the list of commits made in the last two weeks:
+git log &ndash;since=2.weeks
+</p>
+<p>
+-p                Show the patch introduced with each commit.                                                                                         
+&ndash;stat            Show statistics for files modified in each commit.                                                                                  
+&ndash;shortstat       Display only the changed/insertions/deletions line from the –stat command.                                                          
+&ndash;name-only       Show the list of files modified after the commit informa- tion.                                                                     
+&ndash;name-status     Show the list of files affected with added/modified/deleted information as well.                                                    
+&ndash;abbrev-commit   Show only the first few characters of the SHA-1 checksum instead of all 40.                                                         
+&ndash;relative-date   Display the date in a relative format (for example, “2 weeks ago”) instead of using the full date format.                           
+&ndash;graph           Display an ASCII graph of the branch and merge history beside the log output.                                                       
+&ndash;pretty          Show commits in an alternate format. Options include one- line, short, full, fuller, and format (where you specify your own format).
+</p>
+<p>
+-(n)              Show only the last n commits                                                
+&ndash;since, &ndash;after  Limit the commits to those made after the specified date.                   
+&ndash;until, &ndash;before Limit the commits to those made before the specified date.                  
+&ndash;author          Only show commits in which the author entry matches the specified string.   
+&ndash;committer       Only show commits in which the committer entry matches the specified string.
+</p>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-11" class="outline-3">
+<h3 id="sec-1-11"><span class="section-number-3">1.11</span> Author vs. Committer</h3>
+<div class="outline-text-3" id="text-1-11">
+
+<p>The author is the person that originally wrote the work.
+The committer is the person that last applied the work.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Top level headline</h2>
+<div class="outline-text-2" id="text-2">
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Second level</h3>
+<div class="outline-text-3" id="text-2-1">
+
+
+</div>
+
+<div id="outline-container-2-1-1" class="outline-4">
+<h4 id="sec-2-1-1"><span class="section-number-4">2.1.1</span> 3rd level</h4>
+<div class="outline-text-4" id="text-2-1-1">
+
+<p>some text
+</p></div>
+
+</div>
+
+<div id="outline-container-2-1-2" class="outline-4">
+<h4 id="sec-2-1-2"><span class="section-number-4">2.1.2</span> 3rd level</h4>
+<div class="outline-text-4" id="text-2-1-2">
+
+<p>more text
+</p>
+</div>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Another Top level he</h2>
+<div class="outline-text-2" id="text-3">
+
+<p>Some more text
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Use Alt-Enter to create a new heading</h2>
+<div class="outline-text-2" id="text-4">
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Use C-Enter to insert a new heading at the end of the current branch</h2>
+<div class="outline-text-2" id="text-5">
+
+
+</div>
+
+<div id="outline-container-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> what?</h3>
+<div class="outline-text-3" id="text-5-1">
+
+
+</div>
+
+<div id="outline-container-5-1-1" class="outline-4">
+<h4 id="sec-5-1-1"><span class="section-number-4">5.1.1</span> Seco1nd level 2 &nbsp;&nbsp;&nbsp;<span class="tag"><span class="home">home</span></span></h4>
+<div class="outline-text-4" id="text-5-1-1">
+
+<ul>
+<li id="sec-5-1-1-1">3rd level<br/>
+</li>
+</ul>
+<ul>
+<li id="sec-5-1-1-2">Inserted 3rd level<br/>
+</li>
+</ul>
+<ul>
+<li id="sec-5-1-1-3">Another 3rd level<br/>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2013-10-28T07:22-0400</p>
+<p class="author">Author: Daniel Viar</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
