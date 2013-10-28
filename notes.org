@@ -2,6 +2,7 @@
 
 * GIT
 ** Setup Commands
+#+BEGIN_SRC bash
 git config --global user.name "dviar2718"
 git config --global user.email dan.viar@gmail.com
 git config --global core.editor emacs
@@ -9,40 +10,75 @@ git config --list
 Note that you can check a key with
 git config key
 git config user.name
+#+END_SRC
+Some more stuff....
+
+#+BEGIN_SRC Python
+def myfun(txt):
+   print("Hello",txt)
+
+#+END_SRC
 ** Getting Help
+#+BEGIN_SRC bash
 git help config
 git config --help
 man git-config
+
+#+END_SRC
 ** Create a repo from a folder on disk
 First navigate to the folder then initialize a new repo
+#+BEGIN_SRC bash 
 git init
+
+#+END_SRC
 Then add all the contents to the repo
+#+BEGIN_SRC bash
 git add *.*
 git commit -m 'initial version'
 git status
 git add vim_notes.txt
 git commit
+
+#+END_SRC
 ** Push a repo to a remote location
 First go to GitHub and create a new (empty) repo
+
 Next create a link (in this case called "code") to the remote location
+#+BEGIN_SRC bash
 git remote add code git://github.com/dviar2718/code.git
+#+END_SRC
 You can remove it if you make a mistake with:
+#+BEGIN_SRC bash
 git remote remove code
+
+#+END_SRC
 List all remotes
+#+BEGIN_SRC bash
 git remote -v
 git push -u code master
+
+#+END_SRC bash
 ** Clone a Repo
 First navigate to the directory where you want the repo to be located
+#+BEGIN_SRC bash
 git clone git://github.com/dviar2718/pzelle2.git
+
+#+END_SRC
 If you want to specify a different target directory (e.g. my_pzelle2)
+
+#+BEGIN_SRC bash
 git clone git://github.com/dviar2718/pzelle2.git my_pzelle2
+
+#+END_SRC
 
 ** File Status Life Cycle
 Each file in your working directory can be in one of two states: 
+
 1. tracked
 2. untracked
 
 Tracked files can be 
+
 - unmodified
 - modified
 - staged
@@ -65,15 +101,95 @@ cat .gitignore
 The first line above tells git to ignore files that end with .o or .a
 The second line tells git to ignore files that end with *.~
 
-
 ** What has changed inside your files?
-To see what you've changed but not yet staged:
+*** To see what you've changed but not yet staged:
 git diff
-To see what you've staged that will go into your next commit:
+*** To see what you've staged that will go into your next commit:
 git diff --cached
 git diff --staged
-What have you changed but not yet staged?
+*** What have you changed but not yet staged?
 
+** Different ways to commit
+*** The normal way:
+git commit
+*** For more detail (run diff in editor)
+git commit -v
+*** Specify your commit message as you commit
+git commit -m "Changed code to speed up hitory proc"
+
+*** Skipping the Staging Area
+If you want to automatically commit everything that has changed
+In other words, it will stage everything first.
+git commit -a    
+*** Remove Files from Git
+First remove the file from the Working directory
+rm filename
+Next, stage the files removal
+git rm filename
+If the file was modified and staged already you can force the removal
+git rm -f filename
+To keep the file on your hard drive but not have Git track it
+git rm --cached filename
+You can also use file-glob patterns.  For example
+git rm log/\*.log
+removes all .log files in the log directory.
+** Viewing the Commit History
+To list the commits made in reverse chronological order
+git log
+To show the diff introduced in each commit
+git log p
+git log -p -2  ## limit output to only last two entries
+To see abbreviated stats for each commit
+git log --stat
+Use --pretty to change the log output formats to something other than default
+git log --pretty=oneline  #can also use short, full, and fuller
+You can also specify your own output format
+git log --pretty=format:"%h - %an, %ar : %s"
+You can add an "ASCII" graph showing the merge history
+git log --pretty=format:"%h %s" --graph
+
+Option  Description of Output
+%H	Commit hash
+%h	Abbreviated commit hash 
+%T	Tree hash 
+%t	Abbreviated tree hash 
+%P	Parent hashes 
+%p	Abbreviated parent hashes 
+%an	Author name 
+%ae	Author e-mail 
+%ad	Author date (format respects the date= option) 
+%ar	Author date, relative 
+%cn	Committer name 
+%ce	Committer email 
+%cd	Committer date 
+%cr	Committer date, relative 
+%s	Subject
+*** Limiting Log Output
+-n shows the last n commits.  Example:
+git log -p -2  ## limit output to only last two entries
+Get the list of commits made in the last two weeks:
+git log --since=2.weeks
+
+-p                Show the patch introduced with each commit.                                                                                         
+--stat            Show statistics for files modified in each commit.                                                                                  
+--shortstat       Display only the changed/insertions/deletions line from the –stat command.                                                          
+--name-only       Show the list of files modified after the commit informa- tion.                                                                     
+--name-status     Show the list of files affected with added/modified/deleted information as well.                                                    
+--abbrev-commit   Show only the first few characters of the SHA-1 checksum instead of all 40.                                                         
+--relative-date   Display the date in a relative format (for example, “2 weeks ago”) instead of using the full date format.                           
+--graph           Display an ASCII graph of the branch and merge history beside the log output.                                                       
+--pretty          Show commits in an alternate format. Options include one- line, short, full, fuller, and format (where you specify your own format).
+
+-(n)              Show only the last n commits                                                
+--since, --after  Limit the commits to those made after the specified date.                   
+--until, --before Limit the commits to those made before the specified date.                  
+--author          Only show commits in which the author entry matches the specified string.   
+--committer       Only show commits in which the committer entry matches the specified string.
+
+ 
+** Author vs. Committer
+The author is the person that originally wrote the work.
+The committer is the person that last applied the work.
 
 * Top level headline
 ** Second level
